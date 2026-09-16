@@ -7,8 +7,10 @@
 | スクリプト | Google Apps Script | ★★★★☆ | スプレッドシート自動化・メール通知・帳票生成 |
 | スクリプト | Python | ★★★☆☆ | CSV処理・データ整形・業務自動化 |
 | スプレッドシート | Google スプレッドシート | ★★★★★ | 集計・自動化・ダッシュボード |
-| スプレッドシート | Excel | ★★★★☆ | 帳票作成・マクロ（VBA軽微） |
-| API | Anthropic API（Claude） | ★★★☆☆ | テキスト分類・要約・自動判定 |
+| スプレッドシート | Excel VBA / マクロ | ★★★★☆ | 既存マクロ改修・保守・年度更新対応 |
+| AI活用 | Claude Code | ★★★★☆ | コード生成・業務自動化スクリプト設計 |
+| AI活用 | Anthropic API（Claude） | ★★★☆☆ | テキスト分類・要約・自動判定・GAS連携 |
+| API | freee API | ★★★☆☆ | 取引データ取得・月次集計連携 |
 | API | Google Workspace API | ★★★☆☆ | Drive / Gmail / Calendar 連携 |
 | API | Notion API | ★★☆☆☆ | データベース同期・タスク管理 |
 | データ | pandas | ★★★☆☆ | CSV処理・データクレンジング |
