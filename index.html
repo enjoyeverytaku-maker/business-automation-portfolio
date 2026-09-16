@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>業務自動化・経理DX サポート ポートフォリオ</title>
+<meta name="description" content="Google Apps Script / Python / Claude API を使った業務自動化・経理DX支援のポートフォリオ。実績事例・サンプルプロジェクト・サービスメニューを掲載。">
+<style>
+  :root{
+    --navy:#0f2740;
+    --navy-2:#173a5e;
+    --accent:#2f6fed;
+    --accent-2:#1a8f6b;
+    --bg:#f6f8fb;
+    --card:#ffffff;
+    --text:#1c2733;
+    --text-mute:#5b6b7c;
+    --border:#e3e8ee;
+    --radius:14px;
+    --shadow:0 4px 18px rgba(15,39,64,0.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0b1420;
+      --card:#131f2e;
+      --text:#e7edf3;
+      --text-mute:#9fb0c0;
+      --border:#22303f;
+      --shadow:0 4px 18px rgba(0,0,0,0.35);
+    }
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Helvetica Neue",Arial,sans-serif;
+    line-height:1.75;
+  }
+  a{color:var(--accent);}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,248,251,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--border);
+  }
+  @media (prefers-color-scheme: dark){
+    header.site{background:rgba(11,20,32,0.85);}
+  }
+  header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px;}
+  .brand{font-weight:700;font-size:15px;letter-spacing:.02em;color:var(--text);text-decoration:none;}
+  nav.main-nav{display:flex;gap:20px;flex-wrap:wrap;}
+  nav.main-nav a{color:var(--text-mute);text-decoration:none;font-size:13.5px;font-weight:600;}
+  nav.main-nav a:hover{color:var(--accent);}
+  .nav-toggle{display:none;}
+
+  .hero{
+    background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 60%,#0d3a52 100%);
+    color:#eef4fb;
+    padding:72px 0 64px;
+  }
+  .hero .eyebrow{
+    display:inline-block;font-size:12.5px;font-weight:700;letter-spacing:.08em;
+    background:rgba(255,255,255,0.12);padding:5px 12px;border-radius:100px;margin-bottom:18px;
+  }
+  .hero h1{font-size:clamp(26px,4vw,38px);line-height:1.45;margin:0 0 18px;font-weight:800;}
+  .hero p.lead{font-size:15.5px;color:#c7d7e8;max-width:640px;margin:0 0 26px;}
+  .hero .chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;}
+  .hero .chip{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);color:#e3edf7;
+    padding:7px 14px;border-radius:100px;font-size:12.5px;}
+  .hero .cta-row{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:12px 22px;border-radius:10px;font-weight:700;font-size:14px;
+    text-decoration:none;transition:transform .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-ghost{background:transparent;color:#eef4fb;border:1px solid rgba(255,255,255,0.35);}
+
+  section{padding:56px 0;}
+  section.alt{background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+  .section-head{margin-bottom:30px;}
+  .section-head .kicker{font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;}
+  .section-head h2{font-size:24px;margin:6px 0 8px;font-weight:800;}
+  .section-head p{color:var(--text-mute);font-size:14px;margin:0;max-width:560px;}
+
+  .grid{display:grid;gap:18px;}
+  .grid-2{grid-template-columns:repeat(2,1fr);}
+  .grid-3{grid-template-columns:repeat(3,1fr);}
+  @media (max-width:760px){ .grid-2,.grid-3{grid-template-columns:1fr;} }
+
+  .card{
+    background:var(--card);border:1px solid var(--border);border-radius:var(--radius);
+    padding:22px 22px;box-shadow:var(--shadow);
+  }
+  .domain-card h3{margin:0 0 8px;font-size:15px;}
+  .domain-card p{margin:0;font-size:13.5px;color:var(--text-mute);}
+
+  table.skills{width:100%;border-collapse:collapse;font-size:13.5px;}
+  table.skills th,table.skills td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--border);}
+  table.skills th{color:var(--text-mute);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.04em;}
+  .stars{color:var(--accent-2);letter-spacing:1px;}
+
+  .case-card{display:flex;flex-direction:column;gap:10px;}
+  .case-card .tag{align-self:flex-start;background:rgba(47,111,237,0.1);color:var(--accent);
+    font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:100px;}
+  .case-card h3{margin:0;font-size:16px;line-height:1.5;}
+  .case-card p{margin:0;font-size:13.5px;color:var(--text-mute);}
+  .case-card .effect{font-size:13px;color:var(--accent-2);font-weight:700;}
+  .case-card .more{font-size:13px;font-weight:700;margin-top:4px;}
+
+  .proj-card h3{margin:0 0 6px;font-size:15px;}
+  .proj-card .stack{font-size:11.5px;color:var(--text-mute);margin-bottom:8px;}
+  .proj-card p{margin:0 0 10px;font-size:13.5px;color:var(--text-mute);}
+
+  .flow{display:flex;flex-direction:column;gap:0;counter-reset:step;}
+  .flow-step{display:flex;gap:16px;padding:18px 0;border-bottom:1px solid var(--border);}
+  .flow-step:last-child{border-bottom:none;}
+  .flow-num{
+    counter-increment:step;flex:0 0 auto;width:34px;height:34px;border-radius:50%;
+    background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:13.5px;
+  }
+  .flow-num::before{content:counter(step);}
+  .flow-body h3{margin:0 0 4px;font-size:14.5px;}
+  .flow-body p{margin:0;font-size:13.5px;color:var(--text-mute);}
+  .flow-body .badge{display:inline-block;margin-top:6px;font-size:11.5px;color:var(--accent-2);font-weight:700;}
+
+  .pricing table{width:100%;border-collapse:collapse;font-size:13.5px;margin-bottom:26px;}
+  .pricing caption{text-align:left;font-weight:800;font-size:14.5px;margin-bottom:10px;color:var(--text);}
+  .pricing th,.pricing td{padding:9px 8px;border-bottom:1px solid var(--border);text-align:left;}
+  .pricing th{color:var(--text-mute);font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;}
+
+  .faq-item{border-bottom:1px solid var(--border);padding:16px 0;}
+  .faq-item summary{cursor:pointer;font-weight:700;font-size:14px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:"+";font-size:18px;color:var(--accent);font-weight:400;transition:transform .15s ease;}
+  .faq-item[open] summary::after{transform:rotate(45deg);}
+  .faq-item .a{margin:10px 0 0;font-size:13.5px;color:var(--text-mute);}
+
+  .note-box{
+    background:rgba(47,111,237,0.06);border:1px solid rgba(47,111,237,0.18);
+    border-radius:var(--radius);padding:18px 20px;font-size:13.5px;color:var(--text-mute);
+  }
+  .note-box strong{color:var(--text);}
+
+  footer.site{padding:48px 0 60px;text-align:center;}
+  footer.site p{font-size:12.5px;color:var(--text-mute);margin:4px 0;}
+  footer.site .repo-link{font-weight:700;}
+
+  .cta-band{
+    background:linear-gradient(135deg,var(--navy) 0%,#0d3a52 100%);color:#eef4fb;
+    border-radius:20px;padding:40px 32px;text-align:center;
+  }
+  .cta-band h2{margin:0 0 10px;font-size:21px;}
+  .cta-band p{margin:0 0 22px;color:#c7d7e8;font-size:13.5px;}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#top">業務自動化・経理DX サポート</a>
+    <nav class="main-nav">
+      <a href="#domains">対応領域</a>
+      <a href="#skills">スキル</a>
+      <a href="#cases">実績事例</a>
+      <a href="#projects">サンプル</a>
+      <a href="#flow">進め方</a>
+      <a href="#pricing">料金目安</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<div id="top"></div>
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">PORTFOLIO</span>
+    <h1>「スプレッドシートの手作業をなくす」専門家として、<br>経理・管理業務を自動化しています。</h1>
+    <p class="lead">
+      Google Apps Script / Python / Claude API を使い、経理・財務・不動産業務・バックオフィスの
+      手作業を「現場で使える形」に整えます。ヒアリング→仕様確定→小さく試作→改善、という進め方を重視しています。
+    </p>
+    <div class="chips">
+      <span class="chip">リモート専門</span>
+      <span class="chip">平日夜（19時以降）・土日終日稼働</span>
+      <span class="chip">Google Apps Script</span>
+      <span class="chip">Python</span>
+      <span class="chip">Claude API</span>
+      <span class="chip">freee API</span>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#cases">実績事例を見る</a>
+      <a class="btn btn-ghost" href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio" target="_blank" rel="noopener">GitHubでコードを見る</a>
+    </div>
+  </div>
+</section>
+
+<section id="domains">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Domains</span>
+      <h2>対応領域</h2>
+      <p>「手作業をなくす」対象は多岐にわたりますが、特に以下の領域で実績があります。</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card domain-card"><h3>経理・財務</h3><p>請求書作成補助・入金消込・月次集計自動化・freee / マネーフォワード API 連携</p></div>
+      <div class="card domain-card"><h3>業務自動化（GAS）</h3><p>スプレッドシート自動化・メール通知・フォーム連携・帳票生成</p></div>
+      <div class="card domain-card"><h3>AI × 業務自動化</h3><p>Claude API + GAS でメール分類・テキスト要約・自動判定システムの構築</p></div>
+      <div class="card domain-card"><h3>Excel VBA 保守</h3><p>既存マクロの改修・バグ修正・年度更新対応・継続保守パートナー</p></div>
+      <div class="card domain-card"><h3>データ処理（Python）</h3><p>CSV取込・整形・クレンジング・会計データ前処理</p></div>
+      <div class="card domain-card"><h3>不動産業務</h3><p>物件管理表・契約書類管理・進捗トラッキング自動化</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Skillset</span>
+      <h2>スキルセット</h2>
+      <p>詳細は <a href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/blob/main/profile/skills.md" target="_blank" rel="noopener">profile/skills.md</a> にも掲載しています。</p>
+    </div>
+    <div class="card">
+      <table class="skills">
+        <thead><tr><th>分類</th><th>ツール / 言語</th><th>習熟度</th><th>主な用途</th></tr></thead>
+        <tbody>
+          <tr><td>スクリプト</td><td>Google Apps Script</td><td class="stars">★★★★☆</td><td>スプレッドシート自動化・メール通知・帳票生成</td></tr>
+          <tr><td>スプレッドシート</td><td>Google スプレッドシート</td><td class="stars">★★★★★</td><td>集計・自動化・ダッシュボード</td></tr>
+          <tr><td>スプレッドシート</td><td>Excel VBA / マクロ</td><td class="stars">★★★★☆</td><td>既存マクロ改修・保守・年度更新対応</td></tr>
+          <tr><td>AI活用</td><td>Claude Code</td><td class="stars">★★★★☆</td><td>コード生成・業務自動化スクリプト設計</td></tr>
+          <tr><td>AI活用</td><td>Anthropic API（Claude）</td><td class="stars">★★★☆☆</td><td>テキスト分類・要約・自動判定・GAS連携</td></tr>
+          <tr><td>スクリプト</td><td>Python</td><td class="stars">★★★☆☆</td><td>CSV処理・データ整形・業務自動化</td></tr>
+          <tr><td>API</td><td>freee API</td><td class="stars">★★★☆☆</td><td>取引データ取得・月次集計連携</td></tr>
+          <tr><td>API</td><td>Google Workspace API</td><td class="stars">★★★☆☆</td><td>Drive / Gmail / Calendar 連携</td></tr>
+          <tr><td>API</td><td>Notion API</td><td class="stars">★★☆☆☆</td><td>データベース同期・タスク管理</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="cases">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Case Studies</span>
+      <h2>実績事例</h2>
+      <p>クライアント名・金額など特定につながる情報は匿名化しています。各カードから詳細（課題〜実装〜効果）を読めます。</p>
+    </div>
+    <div class="grid grid-2">
+
+      <div class="card case-card">
+        <span class="tag">経理・財務</span>
+        <h3>資金繰り表・出納帳連携の自動化</h3>
+        <p>複数口座の出納帳（実績）と月次予定（見込み）を組み合わせ、金融機関提出用の資金繰り表を自動生成。納品後も科目編集・並び替え等の機能追加を継続保守中。</p>
+        <p class="effect">→ 資金繰り表作成の手作業を大幅削減、通帳残高との差異を自動チェック</p>
+        <a class="more" href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/blob/main/case_studies/shikinguri_automation.md" target="_blank" rel="noopener">詳しく見る →</a>
+      </div>
+
+      <div class="card case-card">
+        <span class="tag">経理・財務</span>
+        <h3>freee × スプレッドシート連携自動化</h3>
+        <p>freee API で取引データを自動取得し、勘定科目別の月次集計・予実比較をスプレッドシート上で自動生成。OAuth認証もボタン一つで完結する設計。</p>
+        <p class="effect">→ 月次集計 3〜4時間 → 15分以内 / freeeログイン週5〜6回 → ほぼゼロ</p>
+        <a class="more" href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/blob/main/case_studies/freee_spreadsheet_integration.md" target="_blank" rel="noopener">詳しく見る →</a>
+      </div>
+
+      <div class="card case-card">
+        <span class="tag">経理・財務</span>
+        <h3>経理集計・入金消込の自動化</h3>
+        <p>複数シートに分かれた請求データの集計と銀行データとの照合を自動化。属人化していた確認作業を、誰でも扱えるシートUIに置き換え。</p>
+        <p class="effect">→ 月次集計 2〜3時間 → 10〜15分程度に短縮見込み</p>
+        <a class="more" href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/blob/main/case_studies/accounting_automation.md" target="_blank" rel="noopener">詳しく見る →</a>
+      </div>
+
+      <div class="card case-card">
+        <span class="tag">AI活用</span>
+        <h3>Claude API × GAS でメール・フォームを自動分類</h3>
+        <p>日次50〜80件届く問い合わせメールをClaude APIでカテゴリ・優先度判定・要約し、優先度の高い案件はSlackへ即時通知。</p>
+        <p class="effect">→ 振り分け作業 毎朝1〜2時間 → 確認・補正のみ15〜20分</p>
+        <a class="more" href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/blob/main/case_studies/ai_business_automation.md" target="_blank" rel="noopener">詳しく見る →</a>
+      </div>
+
+      <div class="card case-card">
+        <span class="tag">Excel VBA</span>
+        <h3>Excel VBA 保守・改修パートナー（金融業・組合）</h3>
+        <p>社内に専任エンジニアがいない組織の既存マクロ10件以上を継続保守。年度更新対応を非エンジニアでも変更できるパラメータシート設計に改善。</p>
+        <p class="effect">→ 年度更新対応 3〜4時間 → 連絡〜完了2〜3営業日 / 業務停止ゼロ</p>
+        <a class="more" href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/blob/main/case_studies/excel_vba_maintenance.md" target="_blank" rel="noopener">詳しく見る →</a>
+      </div>
+
+      <div class="card case-card">
+        <span class="tag">GAS 業務効率化</span>
+        <h3>スプレッドシート自動化による報告・集計業務の改善</h3>
+        <p>複数部署からの週次レポート集計・フォーム転記・締切リマインドを自動化。既存のフォーム・シート構造を変えずに組み込み。</p>
+        <p class="effect">→ 週次の集計作業 1〜2時間 → ほぼゼロに短縮見込み</p>
+        <a class="more" href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/blob/main/case_studies/gas_productivity.md" target="_blank" rel="noopener">詳しく見る →</a>
+      </div>
+
+      <div class="card case-card">
+        <span class="tag">不動産</span>
+        <h3>不動産業務の管理表・ワークフロー自動化</h3>
+        <p>物件・顧客・担当者・ステータスを一元管理するマスターシートを構築。契約更新リマインドや進捗サマリーのPDF自動生成も対応。</p>
+        <p class="effect">→ 週1回の進捗ミーティングが各自随時確認可能に</p>
+        <a class="more" href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/blob/main/case_studies/real_estate_workflow.md" target="_blank" rel="noopener">詳しく見る →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Sample Projects</span>
+      <h2>サンプルプロジェクト</h2>
+      <p>実際に動くコードをそのまま公開しています。クリックするとGitHub上でソースを確認できます。</p>
+    </div>
+    <div class="grid grid-2">
+      <div class="card proj-card">
+        <h3>gas_invoice_helper</h3>
+        <div class="stack">GAS</div>
+        <p>請求書番号の自動採番・入金管理・支払期限リマインダー・ステータス管理。</p>
+        <a href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/tree/main/sample_projects/gas_invoice_helper" target="_blank" rel="noopener">コードを見る →</a>
+      </div>
+      <div class="card proj-card">
+        <h3>spreadsheet_reconciliation</h3>
+        <div class="stack">GAS</div>
+        <p>銀行明細と帳簿を自動照合し、差分を色分けハイライトして抽出。</p>
+        <a href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/tree/main/sample_projects/spreadsheet_reconciliation" target="_blank" rel="noopener">コードを見る →</a>
+      </div>
+      <div class="card proj-card">
+        <h3>python_csv_cleaner</h3>
+        <div class="stack">Python</div>
+        <p>全角→半角・金額・日付の正規化、空白行削除などCSVの前処理を自動化。</p>
+        <a href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/tree/main/sample_projects/python_csv_cleaner" target="_blank" rel="noopener">コードを見る →</a>
+      </div>
+      <div class="card proj-card">
+        <h3>gas_claude_classifier</h3>
+        <div class="stack">GAS + Claude API</div>
+        <p>Gmailの問い合わせをカテゴリ・優先度で自動分類し、Slackへ通知。</p>
+        <a href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/tree/main/sample_projects/gas_claude_classifier" target="_blank" rel="noopener">コードを見る →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="flow">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Process</span>
+      <h2>進め方</h2>
+      <p>受注から納品まで、全案件共通のステップです。仕様確定前に認識齟齬をなくすことを重視しています。</p>
+    </div>
+    <div class="card">
+      <div class="flow">
+        <div class="flow-step">
+          <div class="flow-num"></div>
+          <div class="flow-body">
+            <h3>ヒアリング</h3>
+            <p>ヒアリングシートを送付し、現状フロー・課題・ゴールを確認します。サンプルデータがあれば共有をお願いします。</p>
+            <span class="badge">目安：1営業日以内に回答</span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num"></div>
+          <div class="flow-body">
+            <h3>仕様確定</h3>
+            <p>仕様書を作成してお送りし、着手前に認識齟齬を解消します。OKをいただいてから開発を開始します。</p>
+            <span class="badge">目安：ヒアリング後1営業日</span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num"></div>
+          <div class="flow-body">
+            <h3>開発・テスト</h3>
+            <p>仕様書通りに実装し、テスト用サンプルデータで正常系・異常系・境界値を確認します。</p>
+            <span class="badge">目安：2〜10営業日（複雑度による）</span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num"></div>
+          <div class="flow-body">
+            <h3>納品</h3>
+            <p>ソースコード + README + セットアップ手順書 + 操作マニュアルを同梱してお渡しします。</p>
+            <span class="badge">目安：開発完了後当日〜翌日</span>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num"></div>
+          <div class="flow-body">
+            <h3>アフターサポート</h3>
+            <p>納品後3日以内のバグ修正は無償です。追加機能・仕様変更は別途お見積りします。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Pricing</span>
+      <h2>サービスメニュー・料金目安</h2>
+      <p>あくまで目安です。ヒアリング後に要件を整理し、工数×単価で正式にお見積りします。</p>
+    </div>
+    <div class="card pricing">
+      <table>
+        <caption>Google Apps Script（GAS）業務自動化</caption>
+        <thead><tr><th>内容</th><th>目安工数</th><th>目安金額</th></tr></thead>
+        <tbody>
+          <tr><td>定期集計・レポート自動化</td><td>2〜5日</td><td>¥30,000〜</td></tr>
+          <tr><td>未入力・締切リマインドメール</td><td>1〜3日</td><td>¥20,000〜</td></tr>
+          <tr><td>フォーム→シート整形・通知</td><td>1〜2日</td><td>¥15,000〜</td></tr>
+          <tr><td>請求書番号採番・入金管理</td><td>3〜5日</td><td>¥40,000〜</td></tr>
+          <tr><td>銀行明細×帳簿の自動照合</td><td>3〜7日</td><td>¥50,000〜</td></tr>
+        </tbody>
+      </table>
+      <table>
+        <caption>Python スクリプト・データ整形</caption>
+        <thead><tr><th>内容</th><th>目安工数</th><th>目安金額</th></tr></thead>
+        <tbody>
+          <tr><td>CSVクリーニング（文字コード・書式正規化）</td><td>1〜2日</td><td>¥15,000〜</td></tr>
+          <tr><td>会計データの整形・集計</td><td>2〜5日</td><td>¥30,000〜</td></tr>
+          <tr><td>複数ファイルの結合・差分抽出</td><td>1〜3日</td><td>¥20,000〜</td></tr>
+        </tbody>
+      </table>
+      <table>
+        <caption>Excel VBA 保守・改修</caption>
+        <thead><tr><th>内容</th><th>目安工数</th><th>目安金額</th></tr></thead>
+        <tbody>
+          <tr><td>既存マクロのコードレビュー報告書</td><td>半日〜1日</td><td>¥15,000〜</td></tr>
+          <tr><td>VBA修正・バグ修正（1件）</td><td>半日〜1日</td><td>¥20,000〜</td></tr>
+          <tr><td>年度更新対応（複数マクロ）</td><td>1〜3日</td><td>¥30,000〜</td></tr>
+          <tr><td>月額保守（スポット対応）</td><td>月10〜30時間</td><td>¥30,000〜/月</td></tr>
+        </tbody>
+      </table>
+      <table>
+        <caption>AI（Claude API）活用 × 業務自動化</caption>
+        <thead><tr><th>内容</th><th>目安工数</th><th>目安金額</th></tr></thead>
+        <tbody>
+          <tr><td>メール・フォーム自動分類（GAS + Claude）</td><td>3〜5日</td><td>¥50,000〜</td></tr>
+          <tr><td>請求書・帳票テキスト自動抽出</td><td>3〜7日</td><td>¥60,000〜</td></tr>
+          <tr><td>既存GASへのClaude組み込み</td><td>1〜3日</td><td>¥30,000〜</td></tr>
+        </tbody>
+      </table>
+      <div class="note-box">
+        <strong>対応できないこと：</strong> 常駐・出社が必要な業務 / フルタイム拘束（週30時間以上） /
+        インボイス（適格請求書）の発行が必要な案件（未登録のため対応不可）
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">FAQ</span>
+      <h2>よくある質問</h2>
+    </div>
+    <div class="card">
+      <details class="faq-item" open>
+        <summary>どんな案件に対応できますか？</summary>
+        <p class="a">Google Apps Script（GAS）を使ったスプレッドシート自動化、Python を使った CSV/データ整形、Excel VBA の保守・改修、Claude API を使った業務自動化が主な対応領域です。</p>
+      </details>
+      <details class="faq-item">
+        <summary>常駐・出社は可能ですか？</summary>
+        <p class="a">リモートワーク専門のため、常駐・出社が必要な案件はお受けできません。</p>
+      </details>
+      <details class="faq-item">
+        <summary>見積もりはどのように出しますか？</summary>
+        <p class="a">ヒアリング後に要件を整理し、工数×単価でお見積りします。概算が必要な場合は案件内容をお聞きした上でお伝えします。</p>
+      </details>
+      <details class="faq-item">
+        <summary>小さい案件（数千円規模）も対応できますか？</summary>
+        <p class="a">最低受注金額は設けていませんが、ヒアリング・仕様確定のコストを考慮し、¥10,000以上を推奨しています。</p>
+      </details>
+      <details class="faq-item">
+        <summary>開発期間の目安は？</summary>
+        <p class="a">小規模（1〜2機能）で2〜5営業日、中規模（複数機能連携）で5〜10営業日が目安です。急ぎの場合はご相談ください。</p>
+      </details>
+      <details class="faq-item">
+        <summary>ソースコードは納品してもらえますか？</summary>
+        <p class="a">はい、全コードを納品します。著作権はクライアント様に帰属します。</p>
+      </details>
+      <details class="faq-item">
+        <summary>納品後にバグが見つかった場合は？</summary>
+        <p class="a">納品後3日以内の不具合修正は無償です。期間後は別途お見積りします。</p>
+      </details>
+      <details class="faq-item">
+        <summary>引き継ぎ資料はありますか？</summary>
+        <p class="a">セットアップ手順・操作マニュアル・トラブルシューティングを必ず同梱します。IT知識がない担当者でも運用できる粒度を心がけています。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>ご相談・お見積りについて</h2>
+      <p>CrowdWorks / Lancers / ココナラのメッセージ機能からお気軽にご連絡ください。案件内容を伺ってから具体的な進め方・お見積りをご案内します。</p>
+      <a class="btn btn-primary" href="#cases">実績事例をもう一度見る</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <p class="repo-link"><a href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio" target="_blank" rel="noopener">github.com/enjoyeverytaku-maker/business-automation-portfolio</a></p>
+    <p>掲載している実績は、クライアント名・金額など特定につながる情報を匿名化して掲載しています。</p>
+  </div>
+</footer>
+
+</body>
+</html>
