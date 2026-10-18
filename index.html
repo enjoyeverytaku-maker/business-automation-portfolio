@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>業務自動化・経理DX サポート ポートフォリオ</title>
-<meta name="description" content="Google Apps Script / Python / Claude API を使った業務自動化・経理DX支援のポートフォリオ。実績事例・サンプルプロジェクト・サービスメニューを掲載。">
+<title>経理がわかる業務自動化 ポートフォリオ</title>
+<meta name="description" content="元・税理士法人スタッフによる経理・バックオフィスの業務自動化（GAS / kintone / Slack / 会計クラウド）。できることと実績を掲載。">
 <style>
   :root{
     --navy:#0f2740;
@@ -156,18 +156,30 @@
   }
   .cta-band h2{margin:0 0 10px;font-size:21px;}
   .cta-band p{margin:0 0 22px;color:#c7d7e8;font-size:13.5px;}
+  .stats{display:flex;gap:14px;flex-wrap:wrap;margin:0 0 24px;}
+  .stat{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);border-radius:12px;padding:12px 16px;min-width:150px;}
+  .stat b{display:block;font-size:24px;color:#fff;line-height:1.3;}
+  .stat span{font-size:12px;color:#c7d7e8;line-height:1.5;display:block;}
+  .can-card{display:flex;flex-direction:column;gap:8px;}
+  .can-card h3{margin:0;font-size:15.5px;line-height:1.5;}
+  .can-card p{margin:0;font-size:13.5px;color:var(--text-mute);}
+  .can-card .more,.proj-card .more{font-size:13px;font-weight:700;text-decoration:none;}
+  .badge-done,.badge-can{align-self:flex-start;font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:100px;}
+  .badge-done{background:rgba(26,143,107,0.12);color:var(--accent-2);}
+  .badge-can{background:rgba(91,107,124,0.12);color:var(--text-mute);}
+  .case-card .stack{font-size:12px;}
+  @media (max-width:760px){ header.site .wrap{flex-direction:column;align-items:flex-start;gap:8px;} nav.main-nav{gap:14px;} .wrap{padding:0 16px;} }
 </style>
 </head>
 <body>
 
 <header class="site">
   <div class="wrap">
-    <a class="brand" href="#top">業務自動化・経理DX サポート</a>
+    <a class="brand" href="#top">経理がわかる業務自動化｜宇都宮 拓</a>
     <nav class="main-nav">
-      <a href="#domains">対応領域</a>
-      <a href="#skills">スキル</a>
-      <a href="#cases">実績事例</a>
-      <a href="#projects">サンプル</a>
+      <a href="#cando">できること</a>
+      <a href="#cases">実績</a>
+      <a href="#projects">自主制作</a>
       <a href="#flow">進め方</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -178,170 +190,191 @@
 <section class="hero">
   <div class="wrap">
     <span class="eyebrow">PORTFOLIO</span>
-    <h1>「スプレッドシートの手作業をなくす」専門家として、<br>経理・管理業務を自動化しています。</h1>
+    <h1>経理・バックオフィスの「毎月の手作業」と<br>「止まりやすい仕組み」を、今のツールのまま直します。</h1>
     <p class="lead">
-      Google Apps Script / Python / Claude API を使い、経理・財務・不動産業務・バックオフィスの
-      手作業を「現場で使える形」に整えます。ヒアリング→仕様確定→小さく試作→改善、という進め方を重視しています。
+      税理士法人で約3年、法人の記帳・申告を担当し、現在は事業会社で月次決算と業務効率化を担当しています。
+      経理の流れがわかるので、「現場の人が実際にどう使うか」から逆算して、スプレッドシート・Google Apps Script・kintone・Slack の仕組みを作ります。
     </p>
+    <div class="stats">
+      <div class="stat"><b>6件</b><span>同じ企業から継続して受注<br>（2026年8月〜）</span></div>
+      <div class="stat"><b>約3年</b><span>税理士法人での<br>会計・税務の実務</span></div>
+      <div class="stat"><b>全件</b><span>操作マニュアルと<br>元に戻す手順を同梱</span></div>
+    </div>
     <div class="chips">
-      <span class="chip">リモート専門</span>
-      <span class="chip">平日夜（19時以降）・土日終日稼働</span>
+      <span class="chip">リモートのみ</span>
+      <span class="chip">平日夜（19時以降）・土日</span>
       <span class="chip">Google Apps Script</span>
-      <span class="chip">Python</span>
+      <span class="chip">kintone</span>
+      <span class="chip">Slack ワークフロー</span>
+      <span class="chip">freee / マネーフォワード</span>
       <span class="chip">Claude API</span>
-      <span class="chip">freee API</span>
     </div>
     <div class="cta-row">
-      <a class="btn btn-primary" href="#cases">実績事例を見る</a>
-      <a class="btn btn-ghost" href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio" target="_blank" rel="noopener">GitHubでコードを見る</a>
+      <a class="btn btn-primary" href="#cando">何を頼めるか見る</a>
+      <a class="btn btn-ghost" href="#cases">実績を見る</a>
     </div>
   </div>
 </section>
 
-<section id="domains">
+<section id="cando">
   <div class="wrap">
     <div class="section-head">
-      <span class="kicker">Domains</span>
-      <h2>対応領域</h2>
-      <p>「手作業をなくす」対象は多岐にわたりますが、特に以下の領域で実績があります。</p>
-    </div>
-    <div class="grid grid-3">
-      <div class="card domain-card"><h3>経理・財務</h3><p>請求書作成補助・入金消込・月次集計自動化・freee / マネーフォワード API 連携</p></div>
-      <div class="card domain-card"><h3>業務自動化（GAS）</h3><p>スプレッドシート自動化・メール通知・フォーム連携・帳票生成</p></div>
-      <div class="card domain-card"><h3>AI × 業務自動化</h3><p>Claude API + GAS でメール分類・テキスト要約・自動判定システムの構築</p></div>
-      <div class="card domain-card"><h3>Excel VBA 保守</h3><p>既存マクロの改修・バグ修正・年度更新対応・継続保守パートナー</p></div>
-      <div class="card domain-card"><h3>データ処理（Python）</h3><p>CSV取込・整形・クレンジング・会計データ前処理</p></div>
-      <div class="card domain-card"><h3>不動産業務</h3><p>物件管理表・契約書類管理・進捗トラッキング自動化</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="alt" id="skills">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">Skillset</span>
-      <h2>スキルセット</h2>
-      <p>詳細は <a href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/blob/main/profile/skills.md" target="_blank" rel="noopener">profile/skills.md</a> にも掲載しています。</p>
-    </div>
-    <div class="card">
-      <table class="skills">
-        <thead><tr><th>分類</th><th>ツール / 言語</th><th>習熟度</th><th>主な用途</th></tr></thead>
-        <tbody>
-          <tr><td>スクリプト</td><td>Google Apps Script</td><td class="stars">★★★★☆</td><td>スプレッドシート自動化・メール通知・帳票生成</td></tr>
-          <tr><td>スプレッドシート</td><td>Google スプレッドシート</td><td class="stars">★★★★★</td><td>集計・自動化・ダッシュボード</td></tr>
-          <tr><td>スプレッドシート</td><td>Excel VBA / マクロ</td><td class="stars">★★★★☆</td><td>既存マクロ改修・保守・年度更新対応</td></tr>
-          <tr><td>AI活用</td><td>Claude Code</td><td class="stars">★★★★☆</td><td>コード生成・業務自動化スクリプト設計</td></tr>
-          <tr><td>AI活用</td><td>Anthropic API（Claude）</td><td class="stars">★★★☆☆</td><td>テキスト分類・要約・自動判定・GAS連携</td></tr>
-          <tr><td>スクリプト</td><td>Python</td><td class="stars">★★★☆☆</td><td>CSV処理・データ整形・業務自動化</td></tr>
-          <tr><td>API</td><td>freee API</td><td class="stars">★★★☆☆</td><td>取引データ取得・月次集計連携</td></tr>
-          <tr><td>API</td><td>Google Workspace API</td><td class="stars">★★★☆☆</td><td>Drive / Gmail / Calendar 連携</td></tr>
-          <tr><td>API</td><td>Notion API</td><td class="stars">★★☆☆☆</td><td>データベース同期・タスク管理</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<section id="cases">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="kicker">Case Studies</span>
-      <h2>実績事例</h2>
-      <p>クライアント名・金額など特定につながる情報は匿名化しています。各カードから詳細（課題〜実装〜効果）を読めます。</p>
+      <span class="kicker">What I can do</span>
+      <h2>こんなときにご相談ください</h2>
+      <p>「実績あり」は実際にお客様の業務で納品したもの、「対応可」は自主制作や本業での経験をもとにお受けできるものです。</p>
     </div>
     <div class="grid grid-2">
-
-      <div class="card case-card">
-        <span class="tag">経理・財務</span>
-        <h3>資金繰り表・出納帳連携の自動化</h3>
-        <p>複数口座の出納帳（実績）と月次予定（見込み）を組み合わせ、金融機関提出用の資金繰り表を自動生成。納品後も科目編集・並び替え等の機能追加を継続保守中。</p>
-        <p class="effect">→ 資金繰り表作成の手作業を大幅削減、通帳残高との差異を自動チェック</p>
-        <a class="more" href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/blob/main/case_studies/shikinguri_automation.md" target="_blank" rel="noopener">詳しく見る →</a>
+      <div class="card can-card">
+        <span class="badge-done">実績あり</span>
+        <h3>毎月の集計・転記の手作業をなくしたい</h3>
+        <p>出納帳から資金繰り表を自動で作る、複数シートの数字を集計表にまとめる、などをスプレッドシートのまま自動化します。</p>
+        <a class="more" href="#case-cashflow">→ 資金繰り表の自動作成</a>
       </div>
-
-      <div class="card case-card">
-        <span class="tag">経理・財務</span>
-        <h3>freee × スプレッドシート連携自動化</h3>
-        <p>freee API で取引データを自動取得し、勘定科目別の月次集計・予実比較をスプレッドシート上で自動生成。OAuth認証もボタン一つで完結する設計。</p>
-        <p class="effect">→ 月次集計 3〜4時間 → 15分以内 / freeeログイン週5〜6回 → ほぼゼロ</p>
-        <a class="more" href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/blob/main/case_studies/freee_spreadsheet_integration.md" target="_blank" rel="noopener">詳しく見る →</a>
+      <div class="card can-card">
+        <span class="badge-done">実績あり</span>
+        <h3>メールで届く請求書の保存・振り分けを自動にしたい</h3>
+        <p>共有アドレスに届いた請求書PDFを、決めたフォルダへ自動で保存します。設定は担当者が画面から変えられる形にします。</p>
+        <a class="more" href="#case-invoice">→ 請求書メールの自動保存</a>
       </div>
-
-      <div class="card case-card">
-        <span class="tag">経理・財務</span>
-        <h3>経理集計・入金消込の自動化</h3>
-        <p>複数シートに分かれた請求データの集計と銀行データとの照合を自動化。属人化していた確認作業を、誰でも扱えるシートUIに置き換え。</p>
-        <p class="effect">→ 月次集計 2〜3時間 → 10〜15分程度に短縮見込み</p>
-        <a class="more" href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/blob/main/case_studies/accounting_automation.md" target="_blank" rel="noopener">詳しく見る →</a>
+      <div class="card can-card">
+        <span class="badge-done">実績あり</span>
+        <h3>申請・承認の流れを仕組みにしたい</h3>
+        <p>Slack ワークフロー・kintone・Google フォームで、申請→承認→記録の流れを作ります。差し戻しのルールなど曖昧な点は、作る前に確認します。</p>
+        <a class="more" href="#case-approval">→ 承認ワークフローの基盤構築</a>
       </div>
-
-      <div class="card case-card">
-        <span class="tag">AI活用</span>
-        <h3>Claude API × GAS でメール・フォームを自動分類</h3>
-        <p>日次50〜80件届く問い合わせメールをClaude APIでカテゴリ・優先度判定・要約し、優先度の高い案件はSlackへ即時通知。</p>
-        <p class="effect">→ 振り分け作業 毎朝1〜2時間 → 確認・補正のみ15〜20分</p>
-        <a class="more" href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/blob/main/case_studies/ai_business_automation.md" target="_blank" rel="noopener">詳しく見る →</a>
+      <div class="card can-card">
+        <span class="badge-done">実績あり</span>
+        <h3>自動化が重複したり、通知が漏れたりする</h3>
+        <p>今動いている仕組みのログとデータを調べて原因を特定し、新しいツールを増やさずに作り直します。</p>
+        <a class="more" href="#case-slack">→ Slack ワークフローの重複・通知漏れ解決</a>
       </div>
-
-      <div class="card case-card">
-        <span class="tag">Excel VBA</span>
-        <h3>Excel VBA 保守・改修パートナー（金融業・組合）</h3>
-        <p>社内に専任エンジニアがいない組織の既存マクロ10件以上を継続保守。年度更新対応を非エンジニアでも変更できるパラメータシート設計に改善。</p>
-        <p class="effect">→ 年度更新対応 3〜4時間 → 連絡〜完了2〜3営業日 / 業務停止ゼロ</p>
-        <a class="more" href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/blob/main/case_studies/excel_vba_maintenance.md" target="_blank" rel="noopener">詳しく見る →</a>
+      <div class="card can-card">
+        <span class="badge-done">実績あり</span>
+        <h3>GAS やマクロを安全に直したい・引き継ぎたい</h3>
+        <p>変更前の状態を残してから直し、いつでも元に戻せるようにします。Excel VBA・マクロの改修もお受けします。</p>
+        <a class="more" href="#case-savepoint">→ GAS の変更管理システム</a>
       </div>
-
-      <div class="card case-card">
-        <span class="tag">GAS 業務効率化</span>
-        <h3>スプレッドシート自動化による報告・集計業務の改善</h3>
-        <p>複数部署からの週次レポート集計・フォーム転記・締切リマインドを自動化。既存のフォーム・シート構造を変えずに組み込み。</p>
-        <p class="effect">→ 週次の集計作業 1〜2時間 → ほぼゼロに短縮見込み</p>
-        <a class="more" href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/blob/main/case_studies/gas_productivity.md" target="_blank" rel="noopener">詳しく見る →</a>
+      <div class="card can-card">
+        <span class="badge-done">実績あり</span>
+        <h3>会計ソフトの導入・連携を整えたい</h3>
+        <p>マネーフォワード クラウド・freee の初期設定、銀行・カード・EC モールとの連携、自動仕訳ルールの作成を行います。</p>
+        <a class="more" href="#case-accounting">→ 会計クラウドの初期設定</a>
       </div>
-
-      <div class="card case-card">
-        <span class="tag">不動産</span>
-        <h3>不動産業務の管理表・ワークフロー自動化</h3>
-        <p>物件・顧客・担当者・ステータスを一元管理するマスターシートを構築。契約更新リマインドや進捗サマリーのPDF自動生成も対応。</p>
-        <p class="effect">→ 週1回の進捗ミーティングが各自随時確認可能に</p>
-        <a class="more" href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/blob/main/case_studies/real_estate_workflow.md" target="_blank" rel="noopener">詳しく見る →</a>
+      <div class="card can-card">
+        <span class="badge-done">実績あり</span>
+        <h3>システムを入れ替える前に、今の業務を整理したい</h3>
+        <p>現場で実際に回っている業務の流れ・帳票・kintone アプリを棚卸しし、ベンダーと話すための資料にまとめます。</p>
+        <a class="more" href="#case-asis">→ 基幹システム刷新前の業務調査</a>
       </div>
-
+      <div class="card can-card">
+        <span class="badge-can">対応可</span>
+        <h3>AI を業務に組み込みたい</h3>
+        <p>問い合わせの分類・要約などに Claude API を組み込みます。判定結果は人が後から確認・修正できる形で残します。</p>
+        <a class="more" href="#projects">→ 自主制作サンプル</a>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="alt" id="projects">
+<section class="alt" id="cases">
   <div class="wrap">
     <div class="section-head">
-      <span class="kicker">Sample Projects</span>
-      <h2>サンプルプロジェクト</h2>
-      <p>実際に動くコードをそのまま公開しています。クリックするとGitHub上でソースを確認できます。</p>
+      <span class="kicker">Client work</span>
+      <h2>実績</h2>
+      <p>守秘義務のため、社名・金額など特定につながる情報は伏せています。1〜5は同じ企業からの継続のご依頼です。</p>
+    </div>
+    <div class="grid grid-2">
+      <div class="card case-card" id="case-slack">
+        <span class="tag">1｜中堅企業・管理部門</span>
+        <h3>Slack ワークフローの重複処理・通知漏れを根本から解決</h3>
+        <p><b>課題</b>　案件登録が集中すると同じ案件が重複処理され、通知漏れ・二重通知も起きていた。実データでは数千件中100件超の重複。</p>
+        <p><b>対応</b>　ログを分析して取りこぼしの構造的な原因を特定。「通知を待つ」方式から「状態を定期的に見に行く」方式に変え、kintone の重複禁止設定で二重登録を防止。切り戻し手順書も作成。</p>
+        <p class="effect">応急処置を即日で本番反映 → kintone 連携版を納品し、継続のご依頼につながりました</p>
+        <p class="stack">Google Apps Script / Slack Workflow Builder / kintone REST API</p>
+      </div>
+      <div class="card case-card" id="case-savepoint">
+        <span class="tag">2｜中堅企業・情報システム</span>
+        <h3>GAS の変更を「セーブ」して戻せる社内向け変更管理システム</h3>
+        <p><b>課題</b>　業務で GAS を多数使っているが、変更前との差分確認や元に戻す手段がなく、修正ミスが怖くて手を入れられない状態。</p>
+        <p><b>対応</b>　ブラウザだけでソースの取得・差分表示・セーブ・ワンクリック復元・変更の承認ができる仕組みを、お客様自身の Google Cloud 上に構築。操作マニュアル・管理者ガイド・検収チェックリストを作成。</p>
+        <p class="effect">納品・検収完了。エンジニアでない担当者が GAS の変更を管理できるようになりました</p>
+        <p class="stack">Apps Script API / Google Cloud Run / Google OAuth ／ <a href="https://github.com/enjoyeverytaku-maker/gas-savepoint" target="_blank" rel="noopener">本体コード（GitHub）</a></p>
+      </div>
+      <div class="card case-card" id="case-invoice">
+        <span class="tag">3｜中堅企業・経理部</span>
+        <h3>メールで届く請求書 PDF をフォルダへ自動保存</h3>
+        <p><b>課題</b>　取引先から共有アドレスに届く請求書を、担当者が毎回ダウンロードして保存していた。</p>
+        <p><b>対応</b>　添付 PDF を送付先ごとに決めた Google ドライブのフォルダへ自動保存する GAS を作成。設定値はコードを触らず画面から登録できる形にし、社内の担当者が自分で設置できる手順書を用意。</p>
+        <p class="effect">経理部で稼働中です</p>
+        <p class="stack">Google Apps Script / Gmail / Google ドライブ</p>
+      </div>
+      <div class="card case-card" id="case-approval">
+        <span class="tag">4｜中堅企業・全社</span>
+        <h3>部署ごとの申請・承認ワークフローの基盤構築</h3>
+        <p><b>課題</b>　部署ごとにバラバラだった申請・承認を、共通の仕組みで回したい。申請内容は後から案件単位で追えるようにしたい。</p>
+        <p><b>対応</b>　申請の入口となる親ワークフローと中央の管理表を構築し、案件番号で kintone と紐づける設計に。法務部門の申請12種類は、差し戻しの可否・回数・再入力の範囲を事前に質問して確定させてから設計しました。</p>
+        <p class="effect">基盤を納品。各部署への展開はお客様側の方針に合わせて進めています</p>
+        <p class="stack">Slack Workflow Builder / Google スプレッドシート / Google Apps Script / kintone</p>
+      </div>
+      <div class="card case-card" id="case-asis">
+        <span class="tag">5｜中堅企業・営業部門</span>
+        <h3>基幹システム刷新に向けた現行業務の調査</h3>
+        <p><b>課題</b>　外部ベンダーによる基幹システムの作り直しが始まるが、現場で Slack や kintone を使って実際にどう業務が回っているか、まとまった資料がなかった。</p>
+        <p><b>対応</b>　業務工程の一覧と元資料との差分、ヒアリングで確認すべき点のリスト、帳票とシステムの対応表を作成し、kintone の全スペースを棚卸し。</p>
+        <p class="effect">ベンダーとの要件すり合わせ用の資料として納品しました</p>
+        <p class="stack">kintone / Slack / 業務フロー整理</p>
+      </div>
+      <div class="card case-card" id="case-cashflow">
+        <span class="tag">6｜福祉・介護サービス法人</span>
+        <h3>複数口座の出納帳から資金繰り表を自動作成</h3>
+        <p><b>課題</b>　金融機関・支援機関に出す資金繰り表を、複数口座の出納帳から毎月手作業で作っていた。</p>
+        <p><b>対応</b>　科目の対応表で自動仕分けし、日繰り資金繰り表と月次推移表を自動作成。予定と実績を色分けして二重計上を防ぎ、通帳残高との差異も自動チェック。</p>
+        <p class="effect">納品後も科目の追加・並び替え機能などの追加要望に対応しています</p>
+        <p class="stack">Google Apps Script / Google スプレッドシート</p>
+      </div>
+      <div class="card case-card" id="case-accounting">
+        <span class="tag">7｜卸売・EC 事業者</span>
+        <h3>会計クラウドの初期設定と EC モール・銀行連携</h3>
+        <p><b>課題</b>　会計ソフト未導入で、複数の EC モールの売上・手数料や銀行明細の管理が煩雑だった。</p>
+        <p><b>対応</b>　チャネル別に損益が見える勘定科目・補助科目を設計し、銀行・カード・EC モールを連携して自動仕訳ルールを作成。旧データと二重計上にならない移行方法も設計。</p>
+        <p class="effect">納品完了。お客様側での運用に移行しました</p>
+        <p class="stack">マネーフォワード クラウド会計</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Samples</span>
+      <h2>自主制作サンプル</h2>
+      <p>お客様の案件ではなく、技術検証のために作ったものです。コードをそのまま公開しています。</p>
     </div>
     <div class="grid grid-2">
       <div class="card proj-card">
-        <h3>gas_invoice_helper</h3>
-        <div class="stack">GAS</div>
-        <p>請求書番号の自動採番・入金管理・支払期限リマインダー・ステータス管理。</p>
-        <a href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/tree/main/sample_projects/gas_invoice_helper" target="_blank" rel="noopener">コードを見る →</a>
+        <h3>Gmail 問い合わせの自動分類（Claude API）</h3>
+        <div class="stack">GAS + Claude API + Slack</div>
+        <p>問い合わせをカテゴリ・優先度で自動分類してスプレッドシートに記録し、急ぎのものだけ Slack に通知します。</p>
+        <a class="more" href="./sample_projects/gas_claude_classifier/">コードを見る →</a>
       </div>
       <div class="card proj-card">
-        <h3>spreadsheet_reconciliation</h3>
+        <h3>請求書番号の自動採番・期日リマインド</h3>
         <div class="stack">GAS</div>
-        <p>銀行明細と帳簿を自動照合し、差分を色分けハイライトして抽出。</p>
-        <a href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/tree/main/sample_projects/spreadsheet_reconciliation" target="_blank" rel="noopener">コードを見る →</a>
+        <p>請求書番号の採番、入金ステータス管理、支払期日前のリマインドメールを自動化します。</p>
+        <a class="more" href="./sample_projects/gas_invoice_helper/">コードを見る →</a>
       </div>
       <div class="card proj-card">
-        <h3>python_csv_cleaner</h3>
+        <h3>銀行明細と帳簿の自動照合</h3>
+        <div class="stack">GAS</div>
+        <p>2つのシートを金額・日付で突き合わせ、一致しないものを色分けで表示します。</p>
+        <a class="more" href="./sample_projects/spreadsheet_reconciliation/">コードを見る →</a>
+      </div>
+      <div class="card proj-card">
+        <h3>CSV の整形・クレンジング</h3>
         <div class="stack">Python</div>
-        <p>全角→半角・金額・日付の正規化、空白行削除などCSVの前処理を自動化。</p>
-        <a href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/tree/main/sample_projects/python_csv_cleaner" target="_blank" rel="noopener">コードを見る →</a>
-      </div>
-      <div class="card proj-card">
-        <h3>gas_claude_classifier</h3>
-        <div class="stack">GAS + Claude API</div>
-        <p>Gmailの問い合わせをカテゴリ・優先度で自動分類し、Slackへ通知。</p>
-        <a href="https://github.com/enjoyeverytaku-maker/business-automation-portfolio/tree/main/sample_projects/gas_claude_classifier" target="_blank" rel="noopener">コードを見る →</a>
+        <p>全角半角・金額・日付の表記ゆれをそろえ、会計ソフトに取り込める形に整えます。</p>
+        <a class="more" href="./sample_projects/python_csv_cleaner/">コードを見る →</a>
       </div>
     </div>
   </div>
@@ -409,7 +442,7 @@
     <div class="card">
       <details class="faq-item" open>
         <summary>どんな案件に対応できますか？</summary>
-        <p class="a">Google Apps Script（GAS）を使ったスプレッドシート自動化、Python を使った CSV/データ整形、Excel VBA の保守・改修、Claude API を使った業務自動化が主な対応領域です。</p>
+        <p class="a">スプレッドシート・Google Apps Script の自動化、kintone・Slack ワークフローの構築と改修、会計クラウドの初期設定・連携、Excel VBA の改修が中心です。「こんなときにご相談ください」の一覧に近いものがあればお気軽にどうぞ。</p>
       </details>
       <details class="faq-item">
         <summary>常駐・出社は可能ですか？</summary>
@@ -452,7 +485,7 @@
     <div class="cta-band">
       <h2>ご相談・お見積りについて</h2>
       <p>CrowdWorks / Lancers / ココナラのメッセージ機能からお気軽にご連絡ください。案件内容を伺ってから具体的な進め方・お見積りをご案内します。</p>
-      <a class="btn btn-primary" href="#cases">実績事例をもう一度見る</a>
+      <a class="btn btn-primary" href="#cando">できることをもう一度見る</a>
     </div>
   </div>
 </section>

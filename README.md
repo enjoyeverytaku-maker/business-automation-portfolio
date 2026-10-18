@@ -1,92 +1,66 @@
-# 業務自動化・経理DX サポート ポートフォリオ
+# 経理がわかる業務自動化 ポートフォリオ
 
-Google Apps Script / Python を使った業務自動化・経理DX支援を行っています。
+経理・バックオフィスの「毎月の手作業」と「止まりやすい仕組み」を、今お使いのツールのまま直します。
 
-**稼働条件：** リモートのみ / 平日夜（19時以降）・土日終日
+税理士法人で約3年、法人の記帳・申告を担当し、現在は事業会社で月次決算と業務効率化を担当しています。
+経理の流れがわかるので、現場の人が実際にどう使うかから逆算して、スプレッドシート・Google Apps Script・kintone・Slack の仕組みを作ります。
 
----
+- 同じ企業から6件を継続して受注（2026年8月〜）
+- 納品物には操作マニュアルと元に戻す手順を必ず付けます
+- **稼働条件：** リモートのみ / 平日夜（19時以降）・土日
 
-## 対応領域
-
-| 領域 | 具体的な内容 |
-|------|------------|
-| 経理・財務 | 請求書作成補助・入金消込・月次集計自動化・freee / マネーフォワード API 連携 |
-| 業務自動化（GAS） | スプレッドシート自動化・メール通知・フォーム連携・帳票生成 |
-| AI × 業務自動化 | Claude API + GAS でメール分類・テキスト要約・自動判定システムの構築 |
-| Excel VBA 保守 | 既存マクロの改修・バグ修正・年度更新対応・継続保守パートナー |
-| データ処理（Python） | CSV取込・整形・クレンジング・会計データ前処理 |
-| 不動産業務 | 物件管理表・契約書類管理・進捗トラッキング自動化 |
+サイト版：https://enjoyeverytaku-maker.github.io/business-automation-portfolio/
 
 ---
 
-## スキルセット
+## こんなときにご相談ください
 
-| スキル | レベル |
-|--------|--------|
-| Google Apps Script | ★★★★☆ |
-| Python | ★★★☆☆ |
-| Google Workspace API | ★★★☆☆ |
-| Notion API | ★★★☆☆ |
-| Slack Webhook | ★★☆☆☆ |
+| ご相談内容 | 区分 | 関連する実績 |
+|---|---|---|
+| 毎月の集計・転記の手作業をなくしたい | 実績あり | 資金繰り表の自動作成 |
+| メールで届く請求書の保存・振り分けを自動にしたい | 実績あり | 請求書メールの自動保存 |
+| 申請・承認の流れを仕組みにしたい | 実績あり | 承認ワークフローの基盤構築 |
+| 自動化が重複したり、通知が漏れたりする | 実績あり | Slack ワークフローの重複・通知漏れ解決 |
+| GAS やマクロを安全に直したい・引き継ぎたい | 実績あり | GAS の変更管理システム |
+| 会計ソフトの導入・連携を整えたい | 実績あり | 会計クラウドの初期設定 |
+| システムを入れ替える前に、今の業務を整理したい | 実績あり | 基幹システム刷新前の業務調査 |
+| AI を業務に組み込みたい | 対応可 | 自主制作サンプル |
+
+「実績あり」はお客様の業務で納品したもの、「対応可」は自主制作や本業での経験をもとにお受けできるものです。
 
 ---
 
-## サンプルプロジェクト
+## 実績
 
-実際に動くコードをそのまま公開しています。
+守秘義務のため、社名・金額など特定につながる情報は伏せています。1〜5は同じ企業からの継続のご依頼です。
+
+1. **Slack ワークフローの重複処理・通知漏れを根本から解決**（中堅企業・管理部門）— 実データで数千件中100件超の重複を確認し、原因を特定。「状態を定期的に見に行く」方式と kintone の重複禁止設定で再設計。→ [詳細](./case_studies/slack_workflow_reliability.md)
+2. **GAS の変更を「セーブ」して戻せる社内向け変更管理システム**（中堅企業・情報システム）— 差分表示・セーブ・ワンクリック復元・変更の承認をブラウザだけで。お客様自身の Google Cloud 上に構築。→ [本体コード](https://github.com/enjoyeverytaku-maker/gas-savepoint)
+3. **メールで届く請求書 PDF をフォルダへ自動保存**（中堅企業・経理部）— 設定はコードを触らず画面から登録できる形にし、社内の担当者が自分で設置。経理部で稼働中。
+4. **部署ごとの申請・承認ワークフローの基盤構築**（中堅企業・全社）— 親ワークフローと中央の管理表を構築し、案件番号で kintone と紐づけ。法務部門の申請12種類を設計。
+5. **基幹システム刷新に向けた現行業務の調査**（中堅企業・営業部門）— 業務工程の一覧、ヒアリング確認リスト、帳票とシステムの対応表、kintone 全スペースの棚卸し。
+6. **複数口座の出納帳から資金繰り表を自動作成**（福祉・介護サービス法人）— 納品後も追加要望に対応中。→ [詳細](./case_studies/shikinguri_automation.md)
+7. **会計クラウドの初期設定と EC モール・銀行連携**（卸売・EC 事業者）— チャネル別に損益が見える科目設計と自動仕訳ルールの作成。
+
+---
+
+## 自主制作サンプル
+
+お客様の案件ではなく、技術検証のために作ったものです。
 
 | プロジェクト | 技術 | 概要 |
 |------------|------|------|
-| [gas_invoice_helper](./sample_projects/gas_invoice_helper/) | GAS | 請求書番号自動採番・入金管理・期日リマインド |
-| [spreadsheet_reconciliation](./sample_projects/spreadsheet_reconciliation/) | GAS | 銀行明細×帳簿の自動照合・色分けハイライト |
-| [python_csv_cleaner](./sample_projects/python_csv_cleaner/) | Python | 全角→半角・金額・日付の正規化、空白行削除 |
-| [gas_claude_classifier](./sample_projects/gas_claude_classifier/) | GAS + Claude API | Gmail 問い合わせをカテゴリ・優先度で自動分類 → Slack 通知 |
-
----
-
-## 実績事例
-
-詳細は匿名化済みです。
-
-- [GAS 業務効率化（スプレッドシート自動化）](./case_studies/gas_productivity.md)
-- [不動産業務の管理表・ワークフロー自動化](./case_studies/real_estate_workflow.md)
-- [経理・会計業務の自動化](./case_studies/accounting_automation.md)
-- [freee × スプレッドシート連携自動化](./case_studies/freee_spreadsheet_integration.md)
-- [Excel VBA 保守・改修パートナー（金融業・組合）](./case_studies/excel_vba_maintenance.md)
-- [Claude API × GAS でメール・フォームを自動分類](./case_studies/ai_business_automation.md)
-- [資金繰り表・出納帳連携の自動化](./case_studies/shikinguri_automation.md)
+| [gas_claude_classifier](./sample_projects/gas_claude_classifier/) | GAS + Claude API | Gmail の問い合わせをカテゴリ・優先度で自動分類 → Slack 通知 |
+| [gas_invoice_helper](./sample_projects/gas_invoice_helper/) | GAS | 請求書番号の自動採番・入金管理・期日リマインド |
+| [spreadsheet_reconciliation](./sample_projects/spreadsheet_reconciliation/) | GAS | 銀行明細と帳簿の自動照合・色分け |
+| [python_csv_cleaner](./sample_projects/python_csv_cleaner/) | Python | 全角半角・金額・日付の表記ゆれをそろえる |
 
 ---
 
 ## 進め方
 
 ```
-ヒアリング（1営業日）
-  → 仕様確定（1営業日）← 着手前に認識齟齬を解消
-    → 開発・テスト（2〜10営業日）
-      → 納品（README + 操作マニュアル + 3日サポート込み）
+ヒアリング → 仕様確定（着手前に認識のずれをなくす）→ 開発・テスト → 納品（マニュアル・元に戻す手順付き）
 ```
 
-詳細は [docs/workflow.md](./docs/workflow.md) を参照してください。
-
----
-
-## テンプレート
-
-よく使う書類のテンプレートを公開しています。
-
-| ファイル | 内容 |
-|---------|------|
-| [templates/hearing_sheet.md](./templates/hearing_sheet.md) | ヒアリングシート |
-| [templates/spec_template.md](./templates/spec_template.md) | 仕様書テンプレート |
-| [templates/delivery_template.md](./templates/delivery_template.md) | 納品チェックリスト |
-
----
-
-## よくある質問
-
-→ [docs/faq.md](./docs/faq.md)
-
-## サービスメニュー・料金目安
-
-→ [docs/service_menu.md](./docs/service_menu.md)
+詳細は [docs/workflow.md](./docs/workflow.md)、よくある質問は [docs/faq.md](./docs/faq.md) を参照してください。
