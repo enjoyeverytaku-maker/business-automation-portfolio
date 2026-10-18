@@ -18,6 +18,9 @@
     --border:#e3e8ee;
     --radius:14px;
     --shadow:0 4px 18px rgba(15,39,64,0.06);
+    --mock-bg:#ffffff;--mock-bar:#f1f4f8;--mock-text:#1c2733;
+    --mock-warn:#fff1d6;--mock-warn-text:#a15c00;--mock-ok:#dff3ea;--mock-ok-text:#16734f;
+    --mock-plan:#dbe8fb;--mock-open:#fff4c2;
   }
   @media (prefers-color-scheme: dark){
     :root{
@@ -27,6 +30,9 @@
       --text-mute:#9fb0c0;
       --border:#22303f;
       --shadow:0 4px 18px rgba(0,0,0,0.35);
+      --mock-bg:#0f1926;--mock-bar:#1a2738;--mock-text:#e7edf3;
+      --mock-warn:#3d2e12;--mock-warn-text:#f2b860;--mock-ok:#123528;--mock-ok-text:#6fd3a6;
+      --mock-plan:#1b3150;--mock-open:#3a3414;
     }
   }
   *{box-sizing:border-box;}
@@ -110,6 +116,59 @@
   .case-card p{margin:0;font-size:13.5px;color:var(--text-mute);}
   .case-card .effect{font-size:13px;color:var(--accent-2);font-weight:700;}
   .case-card .more{font-size:13px;font-weight:700;margin-top:4px;}
+
+  .case-list{display:flex;flex-direction:column;gap:20px;}
+  .case-list .case-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:26px;align-items:start;}
+  .case-text,.case-visual{display:flex;flex-direction:column;gap:10px;min-width:0;}
+  @media (max-width:860px){ .case-list .case-card{grid-template-columns:minmax(0,1fr);gap:16px;} }
+  .vis-label{font-size:11.5px !important;font-weight:800;letter-spacing:.06em;color:var(--text) !important;margin-top:4px !important;}
+  .vis-label span{font-weight:600;color:var(--text-mute);letter-spacing:0;}
+  ol.sysflow{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:18px;}
+  ol.sysflow li{position:relative;background:var(--bg);border:1px solid var(--border);border-radius:10px;
+    padding:9px 12px;font-size:13px;line-height:1.6;}
+  ol.sysflow li + li::before{content:"";position:absolute;left:50%;top:-15px;transform:translateX(-50%);
+    border-left:6px solid transparent;border-right:6px solid transparent;border-top:9px solid var(--text-mute);opacity:.55;}
+  ol.sysflow li.core{border-color:var(--accent);background:rgba(47,111,237,0.07);}
+  ol.sysflow li small{display:block;font-size:11.5px;color:var(--text-mute);}
+  .sysnote{font-size:12.5px !important;border-left:3px solid var(--accent-2);padding-left:10px;}
+
+  .mock{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--mock-bg);color:var(--mock-text);font-size:12px;}
+  .mock + .mock{margin-top:4px;}
+  .mock-bar{display:flex;align-items:center;gap:5px;padding:7px 10px;background:var(--mock-bar);border-bottom:1px solid var(--border);}
+  .mock-bar i{width:8px;height:8px;border-radius:50%;background:var(--border);}
+  .mock-bar span{margin-left:8px;font-weight:700;font-size:11.5px;color:var(--text-mute);}
+  .mock-body{padding:12px;display:flex;flex-direction:column;gap:10px;}
+  .mock-body.sheet{overflow-x:auto;}
+  .mock p{margin:0;font-size:11.5px;color:var(--text-mute);}
+  .badge{display:inline-block;font-size:10.5px;font-weight:700;padding:1px 8px;border-radius:100px;background:var(--mock-bar);white-space:nowrap;}
+  .badge.warn,.lbl.warn{background:var(--mock-warn);color:var(--mock-warn-text);}
+  .badge.ok,.lbl.ok{background:var(--mock-ok);color:var(--mock-ok-text);}
+  .sp-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;}
+  .sp-stats div{border:1px solid var(--border);border-radius:8px;padding:6px 8px;}
+  .sp-stats small{display:block;font-size:10px;color:var(--text-mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .sp-stats b{font-size:17px;}
+  .sp-stats .warn b{color:var(--mock-warn-text);}
+  .sp-stats .ok b{color:var(--mock-ok-text);}
+  .sp-proj{border:1px solid var(--border);border-radius:8px;padding:9px 10px;display:flex;flex-direction:column;gap:3px;}
+  .sp-head{display:flex;justify-content:space-between;gap:8px;align-items:center;}
+  .sp-btns{display:flex;gap:6px;flex-wrap:wrap;margin-top:5px;}
+  .sp-btns span{font-size:10.5px;border:1px solid var(--border);border-radius:6px;padding:2px 8px;}
+  .sp-btns .pri{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .labels{flex-direction:row;flex-wrap:wrap;gap:6px;}
+  .lbl{font-size:11px;padding:3px 10px;border-radius:6px;background:var(--mock-bar);}
+  table.mock-table{width:100%;border-collapse:collapse;font-size:11px;}
+  table.mock-table th,table.mock-table td{border:1px solid var(--border);padding:4px 6px;text-align:left;white-space:nowrap;}
+  table.mock-table th{background:var(--mock-bar);font-weight:700;}
+  table.cf td:not(:first-child),table.cf th:not(:first-child){text-align:right;}
+  table.cf tr.sum td{font-weight:700;}
+  table.cf td.plan{background:var(--mock-plan);}
+  table.cf td.open{background:var(--mock-open);}
+  table.cf td.neg{color:#d23c3c;}
+  .legend{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;font-size:10.5px !important;}
+  .sw{display:inline-block;width:11px;height:11px;border:1px solid var(--border);vertical-align:middle;margin-right:3px;background:var(--mock-bg);}
+  .sw.plan{background:var(--mock-plan);}
+  .sw.open{background:var(--mock-open);}
+  .sw.neg{background:#d23c3c;}
 
   .proj-card h3{margin:0 0 6px;font-size:15px;}
   .proj-card .stack{font-size:11.5px;color:var(--text-mute);margin-bottom:8px;}
@@ -283,62 +342,218 @@
       <h2>実績</h2>
       <p>守秘義務のため、社名・金額など特定につながる情報は伏せています。1〜5は同じ企業からの継続のご依頼です。</p>
     </div>
-    <div class="grid grid-2">
+    <div class="case-list">
       <div class="card case-card" id="case-slack">
-        <span class="tag">1｜中堅企業・管理部門</span>
-        <h3>Slack ワークフローの重複処理・通知漏れを根本から解決</h3>
-        <p><b>課題</b>　案件登録が集中すると同じ案件が重複処理され、通知漏れ・二重通知も起きていた。実データでは数千件中100件超の重複。</p>
-        <p><b>対応</b>　ログを分析して取りこぼしの構造的な原因を特定。「通知を待つ」方式から「状態を定期的に見に行く」方式に変え、kintone の重複禁止設定で二重登録を防止。切り戻し手順書も作成。</p>
-        <p class="effect">応急処置を即日で本番反映 → kintone 連携版を納品し、継続のご依頼につながりました</p>
-        <p class="stack">Google Apps Script / Slack Workflow Builder / kintone REST API</p>
+        <div class="case-text">
+          <span class="tag">1｜中堅企業・管理部門</span>
+          <h3>Slack ワークフローの重複処理・通知漏れを根本から解決</h3>
+          <p><b>課題</b>　案件登録が集中すると同じ案件が重複処理され、通知漏れ・二重通知も起きていた。実データでは数千件中100件超の重複。</p>
+          <p><b>対応</b>　ログを分析し、行が一度に追加されると別の行を読んでしまう構造的な原因を特定。「変更を待って反応する」方式から「1分ごとに新しい行を見に行く」方式に変え、失敗した分は自動で再試行。同じ案件の重複は営業担当に Slack でお知らせする形に。切り戻し手順書も作成。</p>
+          <p class="effect">応急処置を即日で本番反映。kintone 連携版の構築・テストまで行い、継続のご依頼につながりました</p>
+          <p class="stack">Google Apps Script / Slack Workflow Builder / Slack API / kintone REST API（連携版）</p>
+        </div>
+        <div class="case-visual">
+          <p class="vis-label">仕組み</p>
+          <ol class="sysflow">
+            <li>Slack の登録フォームから案件を登録</li>
+            <li>スプレッドシートに1行追加</li>
+            <li class="core">GAS が<b>1分ごと</b>に新しい行だけを確認<small>同時に動かないようロック／失敗した行は次回に再試行</small></li>
+            <li>テンプレートから帳票を作成し、URL と処理状況を記録</li>
+            <li>Slack で担当者に通知</li>
+          </ol>
+          <p class="sysnote">同じ「案件ID＋取引先」が来たら、処理は止めずに営業担当へ DM でお知らせ</p>
+        </div>
       </div>
+
       <div class="card case-card" id="case-savepoint">
-        <span class="tag">2｜中堅企業・情報システム</span>
-        <h3>GAS の変更を「セーブ」して戻せる社内向け変更管理システム</h3>
-        <p><b>課題</b>　業務で GAS を多数使っているが、変更前との差分確認や元に戻す手段がなく、修正ミスが怖くて手を入れられない状態。</p>
-        <p><b>対応</b>　ブラウザだけでソースの取得・差分表示・セーブ・ワンクリック復元・変更の承認ができる仕組みを、お客様自身の Google Cloud 上に構築。操作マニュアル・管理者ガイド・検収チェックリストを作成。</p>
-        <p class="effect">納品・検収完了。エンジニアでない担当者が GAS の変更を管理できるようになりました</p>
-        <p class="stack">Apps Script API / Google Cloud Run / Google OAuth ／ <a href="https://github.com/enjoyeverytaku-maker/gas-savepoint" target="_blank" rel="noopener">本体コード（GitHub）</a></p>
+        <div class="case-text">
+          <span class="tag">2｜中堅企業・情報システム</span>
+          <h3>GAS の変更を「セーブ」して戻せる社内向け変更管理システム</h3>
+          <p><b>課題</b>　業務で GAS を多数使っているが、変更前との差分確認や元に戻す手段がなく、修正ミスが怖くて手を入れられない状態。</p>
+          <p><b>対応</b>　ブラウザだけでソースの取得・差分表示・セーブ・ワンクリック復元・変更の承認ができる仕組みを、お客様自身の Google Cloud 上に構築。操作マニュアル・管理者ガイド・検収チェックリストを作成。</p>
+          <p class="effect">納品・検収完了。エンジニアでない担当者が GAS の変更を管理できるようになりました</p>
+          <p class="stack">Apps Script API / Google Cloud Run / Google OAuth ／ <a href="https://github.com/enjoyeverytaku-maker/gas-savepoint" target="_blank" rel="noopener">本体コード（GitHub）</a></p>
+          <p class="vis-label">仕組み</p>
+          <ol class="sysflow">
+            <li>社内の GAS を台帳に登録</li>
+            <li class="core">平日の業務時間中、<b>30分ごと</b>に変更を自動検知</li>
+            <li>差分を確認して「セーブ」を申請</li>
+            <li>担当の上長が承認するとセーブポイントとして記録</li>
+            <li>困ったら、過去のセーブポイントへワンクリックで復元</li>
+          </ol>
+        </div>
+        <div class="case-visual">
+          <p class="vis-label">画面イメージ<span>（ダミーデータで再現）</span></p>
+          <div class="mock">
+            <div class="mock-bar"><i></i><i></i><i></i><span>SavePoint ダッシュボード</span></div>
+            <div class="mock-body">
+              <div class="sp-stats">
+                <div><small>GAS Projects</small><b>8</b></div>
+                <div class="warn"><small>変更あり</small><b>2</b></div>
+                <div class="ok"><small>変更なし</small><b>6</b></div>
+                <div><small>認証エラー</small><b>0</b></div>
+              </div>
+              <div class="sp-proj">
+                <div class="sp-head"><b>経費精算_リマインド通知</b><span class="badge warn">変更あり</span></div>
+                <p>最終セーブ v12・2026-09-14 10:32 ／ 経理部</p>
+                <p>3ファイル変更（09-16 14:00 チェック）</p>
+                <div class="sp-btns"><span>差分を見る</span><span>変更を検知</span><span class="pri">セーブ画面へ</span></div>
+              </div>
+              <table class="mock-table">
+                <thead><tr><th>バージョン</th><th>状態</th><th>申請者</th><th>コメント</th></tr></thead>
+                <tbody>
+                  <tr><td>v13</td><td><span class="badge warn">承認待ち</span></td><td>担当B</td><td>締め日の判定条件を修正</td></tr>
+                  <tr><td>v12</td><td><span class="badge ok">承認済み</span></td><td>担当A</td><td>通知文面を変更</td></tr>
+                  <tr><td>v11</td><td><span class="badge ok">承認済み</span></td><td>担当A</td><td>送信先シートを追加</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div class="card case-card" id="case-invoice">
-        <span class="tag">3｜中堅企業・経理部</span>
-        <h3>メールで届く請求書 PDF をフォルダへ自動保存</h3>
-        <p><b>課題</b>　取引先から共有アドレスに届く請求書を、担当者が毎回ダウンロードして保存していた。</p>
-        <p><b>対応</b>　添付 PDF を送付先ごとに決めた Google ドライブのフォルダへ自動保存する GAS を作成。設定値はコードを触らず画面から登録できる形にし、社内の担当者が自分で設置できる手順書を用意。</p>
-        <p class="effect">経理部で稼働中です</p>
-        <p class="stack">Google Apps Script / Gmail / Google ドライブ</p>
+        <div class="case-text">
+          <span class="tag">3｜中堅企業・経理部</span>
+          <h3>メールで届く請求書 PDF をフォルダへ自動保存</h3>
+          <p><b>課題</b>　取引先から共有アドレスに届く請求書を、担当者が毎回ダウンロードして保存していた。</p>
+          <p><b>対応</b>　添付 PDF を宛先アドレスごとに決めた Google ドライブのフォルダへ自動保存する GAS を作成。保存先はコードを触らず設定画面から1行ずつ登録できる形にし、社内の担当者が自分で設置できる手順書を用意。</p>
+          <p class="effect">経理部で稼働中。担当の方から「かなり楽になった」とのお声をいただいています</p>
+          <p class="stack">Google Apps Script / Gmail / Google ドライブ</p>
+          <p class="vis-label">仕組み</p>
+          <ol class="sysflow">
+            <li>部署ごとの宛先アドレスに請求書メールが届く</li>
+            <li class="core">GAS が<b>30分ごと</b>に、件名のキーワードと PDF 添付で請求書を判定</li>
+            <li>宛先アドレスから保存先フォルダを決めて PDF を保存</li>
+            <li>メールに「処理済み」ラベル。判断できないものは「要確認」へ</li>
+          </ol>
+        </div>
+        <div class="case-visual">
+          <p class="vis-label">画面イメージ<span>（ダミーデータで再現）</span></p>
+          <div class="mock">
+            <div class="mock-bar"><i></i><i></i><i></i><span>Gmail のラベル</span></div>
+            <div class="mock-body labels">
+              <span class="lbl">請求書/未処理</span><span class="lbl ok">請求書/処理済み <b>128</b></span><span class="lbl warn">請求書/要確認 <b>2</b></span>
+            </div>
+          </div>
+          <div class="mock">
+            <div class="mock-bar"><i></i><i></i><i></i><span>請求書自動格納_処理ログ</span></div>
+            <div class="mock-body sheet">
+              <table class="mock-table">
+                <thead><tr><th>日時</th><th>件名</th><th>保存ファイル名</th><th>ステータス</th></tr></thead>
+                <tbody>
+                  <tr><td>10/01 09:30</td><td>9月分ご請求書</td><td>サンプル商事_9月.pdf</td><td>success</td></tr>
+                  <tr><td>10/01 10:00</td><td>【請求書】9月分</td><td>invoice_0921.pdf</td><td>success</td></tr>
+                  <tr><td>10/01 10:30</td><td>ご請求書の送付</td><td>テスト物産_請求書.pdf</td><td>success</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div class="card case-card" id="case-approval">
-        <span class="tag">4｜中堅企業・全社</span>
-        <h3>部署ごとの申請・承認ワークフローの基盤構築</h3>
-        <p><b>課題</b>　部署ごとにバラバラだった申請・承認を、共通の仕組みで回したい。申請内容は後から案件単位で追えるようにしたい。</p>
-        <p><b>対応</b>　申請の入口となる親ワークフローと中央の管理表を構築し、案件番号で kintone と紐づける設計に。法務部門の申請12種類は、差し戻しの可否・回数・再入力の範囲を事前に質問して確定させてから設計しました。</p>
-        <p class="effect">基盤を納品。各部署への展開はお客様側の方針に合わせて進めています</p>
-        <p class="stack">Slack Workflow Builder / Google スプレッドシート / Google Apps Script / kintone</p>
+        <div class="case-text">
+          <span class="tag">4｜中堅企業・全社</span>
+          <h3>部署ごとの申請・承認ワークフローの基盤構築</h3>
+          <p><b>課題</b>　部署ごとにバラバラだった申請・承認を、共通の仕組みで回したい。申請内容は後から案件単位で追えるようにしたい。</p>
+          <p><b>対応</b>　申請の入口となる親ワークフローと中央の管理表を構築し、申請IDで kintone と紐づける設計に。法務部門の申請12種類は、差し戻しの可否・回数・再入力の範囲を事前に質問して確定させてから設計しました。</p>
+          <p class="effect">基盤を納品。各部署への展開はお客様側の方針に合わせて進めています</p>
+          <p class="stack">Slack Workflow Builder / Google スプレッドシート / Google Apps Script / kintone</p>
+        </div>
+        <div class="case-visual">
+          <p class="vis-label">仕組み</p>
+          <ol class="sysflow">
+            <li>Slack の共通申請フォームから申請</li>
+            <li>中央の受付シートに記録</li>
+            <li class="core">GAS が<b>1分ごと</b>に経路表と申請者の役職を確認し、申請IDを発行</li>
+            <li>部署別の承認ワークフローへ振り分け</li>
+            <li>一次・二次・最終承認（Slack のボタンで承認／差し戻し）</li>
+            <li>申請IDをキーに kintone へ記録</li>
+          </ol>
+        </div>
       </div>
+
       <div class="card case-card" id="case-asis">
-        <span class="tag">5｜中堅企業・営業部門</span>
-        <h3>基幹システム刷新に向けた現行業務の調査</h3>
-        <p><b>課題</b>　外部ベンダーによる基幹システムの作り直しが始まるが、現場で Slack や kintone を使って実際にどう業務が回っているか、まとまった資料がなかった。</p>
-        <p><b>対応</b>　業務工程の一覧と元資料との差分、ヒアリングで確認すべき点のリスト、帳票とシステムの対応表を作成し、kintone の全スペースを棚卸し。</p>
-        <p class="effect">ベンダーとの要件すり合わせ用の資料として納品しました</p>
-        <p class="stack">kintone / Slack / 業務フロー整理</p>
+        <div class="case-text">
+          <span class="tag">5｜中堅企業・営業部門</span>
+          <h3>基幹システム刷新に向けた現行業務の調査</h3>
+          <p><b>課題</b>　外部ベンダーによる基幹システムの作り直しが始まるが、現場で Slack や kintone を使って実際にどう業務が回っているか、まとまった資料がなかった。</p>
+          <p><b>対応</b>　業務工程の一覧と元資料との差分、ヒアリングで確認すべき点のリスト、帳票とシステムの対応表を作成し、kintone の全スペースを棚卸し。</p>
+          <p class="effect">ベンダーとの要件すり合わせ用の資料として納品しました</p>
+          <p class="stack">kintone / Slack / 業務フロー整理</p>
+        </div>
+        <div class="case-visual">
+          <p class="vis-label">進め方</p>
+          <ol class="sysflow">
+            <li>既存の業務フロー資料（37工程）を読み込み</li>
+            <li>業務工程の一覧を作り、元資料との差分を整理</li>
+            <li>あいまいな点を「要確認リスト」にまとめてヒアリング</li>
+            <li class="core">帳票とシステムの対応表＋kintone 全スペースの棚卸し</li>
+            <li>ベンダーとの要件すり合わせ資料として納品</li>
+          </ol>
+        </div>
       </div>
+
       <div class="card case-card" id="case-cashflow">
-        <span class="tag">6｜福祉・介護サービス法人</span>
-        <h3>複数口座の出納帳から資金繰り表を自動作成</h3>
-        <p><b>課題</b>　金融機関・支援機関に出す資金繰り表を、複数口座の出納帳から毎月手作業で作っていた。</p>
-        <p><b>対応</b>　科目の対応表で自動仕分けし、日繰り資金繰り表と月次推移表を自動作成。予定と実績を色分けして二重計上を防ぎ、通帳残高との差異も自動チェック。</p>
-        <p class="effect">納品後も科目の追加・並び替え機能などの追加要望に対応しています</p>
-        <p class="stack">Google Apps Script / Google スプレッドシート</p>
+        <div class="case-text">
+          <span class="tag">6｜福祉・介護サービス法人</span>
+          <h3>複数口座の出納帳から資金繰り表を自動作成</h3>
+          <p><b>課題</b>　金融機関・支援機関に出す資金繰り表を、複数口座の出納帳から毎月手作業で作っていた。</p>
+          <p><b>対応</b>　科目の対応表で自動仕分けし、日繰り資金繰り表と月次推移表を自動作成。予定と実績を色分けして二重計上を防ぎ、通帳残高との差異も自動チェック。</p>
+          <p class="effect">納品後も科目の追加・並び替え機能などの追加要望に対応しています</p>
+          <p class="stack">Google Apps Script / Google スプレッドシート</p>
+          <p class="vis-label">仕組み</p>
+          <ol class="sysflow">
+            <li>いつもの出納帳（口座ごと）はそのまま</li>
+            <li class="core">科目の対応表（キーワード→集計科目）で自動仕分け</li>
+            <li>月ごとの日繰り表へ。出納帳を同期すると予定が実績に置き換わる</li>
+            <li>月次まとめを更新し、通帳残高との差異をチェック</li>
+          </ol>
+        </div>
+        <div class="case-visual">
+          <p class="vis-label">画面イメージ<span>（ダミーデータで再現・単位千円）</span></p>
+          <div class="mock">
+            <div class="mock-bar"><i></i><i></i><i></i><span>日繰り表 2026-04</span></div>
+            <div class="mock-body sheet">
+              <table class="mock-table cf">
+                <thead><tr><th>科目</th><th>1日</th><th>2日</th><th>3日</th><th>4日</th><th>5日</th></tr></thead>
+                <tbody>
+                  <tr class="sum"><td>前日繰越金（A）</td><td class="open">3,200</td><td>2,870</td><td class="plan">2,950</td><td class="plan">3,010</td><td class="plan neg">-90</td></tr>
+                  <tr><td>利用料入金（振込）</td><td>120</td><td>80</td><td class="plan">60</td><td class="plan">0</td><td class="plan">0</td></tr>
+                  <tr><td>介護給付費（国保連）</td><td>0</td><td>0</td><td class="plan">0</td><td class="plan">0</td><td class="plan">4,200</td></tr>
+                  <tr class="sum"><td>収入合計（B）</td><td>120</td><td>80</td><td class="plan">60</td><td class="plan">0</td><td class="plan">4,200</td></tr>
+                  <tr><td>人件費・給与</td><td>0</td><td>0</td><td class="plan">0</td><td class="plan">3,100</td><td class="plan">0</td></tr>
+                  <tr><td>家賃・リース代</td><td>450</td><td>0</td><td class="plan">0</td><td class="plan">0</td><td class="plan">0</td></tr>
+                  <tr class="sum"><td>支出合計（C）</td><td>450</td><td>0</td><td class="plan">0</td><td class="plan">3,100</td><td class="plan">0</td></tr>
+                  <tr class="sum"><td>差引過不足（A＋B－C）</td><td>2,870</td><td>2,950</td><td class="plan">3,010</td><td class="plan neg">-90</td><td class="plan">4,110</td></tr>
+                </tbody>
+              </table>
+              <p class="legend"><span class="sw open"></span>月初残高（手入力）<span class="sw"></span>実績<span class="sw plan"></span>予定<span class="sw neg"></span>残高マイナスの日</p>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div class="card case-card" id="case-accounting">
-        <span class="tag">7｜卸売・EC 事業者</span>
-        <h3>会計クラウドの初期設定と EC モール・銀行連携</h3>
-        <p><b>課題</b>　会計ソフト未導入で、複数の EC モールの売上・手数料や銀行明細の管理が煩雑だった。</p>
-        <p><b>対応</b>　チャネル別に損益が見える勘定科目・補助科目を設計し、銀行・カード・EC モールを連携して自動仕訳ルールを作成。旧データと二重計上にならない移行方法も設計。</p>
-        <p class="effect">納品完了。お客様側での運用に移行しました</p>
-        <p class="stack">マネーフォワード クラウド会計</p>
+        <div class="case-text">
+          <span class="tag">7｜卸売・EC 事業者</span>
+          <h3>会計クラウドの初期設定と EC モール・銀行連携</h3>
+          <p><b>課題</b>　会計ソフト未導入で、複数の EC モールの売上・手数料や銀行明細の管理が煩雑だった。</p>
+          <p><b>対応</b>　チャネル別に損益が見える勘定科目・補助科目を設計し、銀行・カード・EC モールを連携して自動仕訳ルールを作成。旧データと二重計上にならない移行方法も設計。</p>
+          <p class="effect">納品完了。お客様側での運用に移行しました</p>
+          <p class="stack">マネーフォワード クラウド会計</p>
+        </div>
+        <div class="case-visual">
+          <p class="vis-label">仕組み</p>
+          <ol class="sysflow">
+            <li>銀行・カード・EC モールの明細を連携</li>
+            <li class="core">売上を EC モールごとの補助科目に分け、自動仕訳ルールを登録</li>
+            <li>連携していない分は CSV で取り込み（売上は重複しないよう除外）</li>
+            <li>旧会計ソフトの残高と突き合わせて差異を確認</li>
+            <li>補助科目ごとの残高でチャネル別の損益を確認</li>
+          </ol>
+        </div>
       </div>
     </div>
   </div>
